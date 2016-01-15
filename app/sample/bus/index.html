@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>バス運行</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/geolib/dist/geolib.js"></script>
+  <script>
+    var host = window.document.location.host.replace(/:.*/, '');
+    var socket = io.connect('http:// + host + :9000');
+
+    socket.on('msg', function (data) {
+        console.log(data);
+        document.getElementById("messages").innerHTML += "<div>" + data + "</div>";
+        console.log(data);
+    });
+
+    function send() {
+      // 次停車する停留所の情報を取得
+      var nextPoint = getNextPoint();
+      // 現在地点を取得
+      var currentPoint = getCurrentPoint();
+
+      if(IsRangePoint())
+      {
+        // バス停留所付近の場合、通過したとみなす
+        socket.emit('passed', nextPoint.stationId);
+      }
+    }
+
+    function IsRangePoint(current, targetPoint) {
+      var geolib = require('geolib');
+      // 停留所までの距離を調べる
+      var distance = geolib.getDistance(
+        {latitude: current.latitude, longitude: current.longitude},	//現在地点
+        {latitude: targetPoint.latitude, longitude: targetPoint.latitude,}	//目的の停留所
+      );
+      return true;
+    }
+
+    function getCurrentPoint() {
+      // 送信する緯度取得
+      var latitude = document.getElementById('latitude').value;
+      // 送信する経度取得
+      var longitude = document.getElementById('longitude').value;
+
+      return {
+              "latitude": latitude,
+              "longitude":longitude,
+             }
+    }
+
+    function getNextPoint() {
+      return {
+                "latitude": "111.11",
+                "longitude": "111.11",
+                "stationId": "E001"
+             }
+    }
+
+    </script>
+</head>
+
+<body>
+    <section class="busStationSelect">
+      <h2>運行開始登録</h2>
+      <input type="button" value="現在地からバス停を検索" onclick="search()" />
+      <div class="startBusStation">
+        <label for="startBusStation">停留所 開始地点</label>
+        <select name="startBusStation" id="startBusStation">
+          <option value="">鴨池新町</option>
+          <option value="">県庁前</option>
+          <option value="">ニュータウン中央</option>
+        </select>
+      </div>
+      <input type="button" value="運行開始" onclick="start()" />
+    </section>
+    <div>
+    <section class="busStationSelect">
+      <h2>現在地送信テスト</h2>
+      <input type="text" id="longitude" />
+      <input type="text" id="latitude" />
+      <input type="button" value="現在地を送信" onclick="send()" />
+    </section>
+</body>
+
+</html>
