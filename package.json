@@ -51,6 +51,8 @@
   },
   "dependencies": {
     "body-parser": "^1.13.2",
-    "express": "^4.13.1"
+    "express": "^4.13.1",
+    "socket.io": "^1.4.4",
+    "geolib": "^2.0.18"
   }
 }

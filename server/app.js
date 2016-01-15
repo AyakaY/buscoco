@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 var app = express();
 var server = require('http').createServer(app);
 var port =  process.env.PORT || 8000;
+var socket = require('socket.io');
+
+app.use(express.static(__dirname + '/sample'));
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
@@ -22,6 +25,10 @@ server.listen(port, process.env.OPENSHIFT_NODEJS_IP || process.env.IP || undefin
 });
 
 // API definition
-require('./api/gruntfiles')(app);
+require('./api/webApi.js')({app: app});
+
+// WebSocket definition
+var io = socket.listen(server);
+require('./api/webSocket.js')({io: io});
 
 exports = module.exports = app;

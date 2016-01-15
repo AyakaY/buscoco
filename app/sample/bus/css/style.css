@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'メイリオ', 'Meiryo', 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', sans-serif;
+  font-size: 16px;
+  color: #444444;
+  background-color: #f5f4ec;
+  box-sizing: border-box;
+}
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+header{
+	background-color: #006e54;
+	padding: 0 .5rem;
+}
+h1{
+	color: #FFFFFF;
+	padding: 1rem 0;
+	margin: 0;
+}
+main{
+	padding: 0 .5rem;
+}
+
+h2{
+	font-size: 1.25rem;
+	color: #006e54;
+	padding: .5em 0;
+	margin: 0;
+}
+
+input,
+select,
+textarea{
+	border: 1px solid #CCCCCC;
+	font-size: 1rem;
+	font-family: 'メイリオ', 'Meiryo', 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', sans-serif;
+	color: #444444;
+	border-radius: 0;
+}
+
+section{
+	padding-bottom: 1rem;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+
+/*バス停選択*/
+.busStationSelect label{
+	display: block;
+	font-weight: bold;
+}
+.busStationSelect select{
+	box-sizing: border-box;
+	padding: .5rem;
+	width: 100%;
+}
+
+.busStationSelect .startBusStation,
+.busStationSelect .goalBusStation{
+	padding-bottom: .5rem;
+}
+
+/*乗車バス選択*/
+.busLineSelect .busLineList li{
+	padding: .5rem;
+	margin-bottom: .25rem;
+	border: 1px solid #CCCCCC;
+}
+.busLineSelect .busLineList .busLineName{
+	padding-right: .25em;
+}
+
+
+/*バスここ*/
+.busHere .busRoute{
+	padding-left: 3rem;
+}
+.busHere .busRoute li{
+	border-bottom: 1px solid #CCCCCC;
+	padding-left: 2em;
+	padding-bottom: .5rem;
+	margin-bottom: 2rem;
+}
+.busHere .busRoute li.active{
+	font-weight: bold;
+}
+
+
+/*********************
+タブレット向けレイアウト
+（幅が732px以上だった場合に適用）
+**********************/
+
+@media screen and (min-width: 732px) {
+}
+
+/*********************
+PC向けレイアウト
+（幅が976px以上だった場合に適用）
+**********************/
+
+@media screen and (min-width: 976px) {}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var host = window.document.location.host.replace(/:.*/, '');
+    var socket = io.connect('http:// + host + :8000');
+
+    socket.on('msg', function (data) {
+        console.log(data);
+        document.getElementById("messages").innerHTML += "<div>" + data + "</div>";
+        console.log(data);
+    });
+
+    function send() {
+        socket.emit('msg', document.getElementById('msg').value);
+    }
+    </script>
+</head>
+
+<body>
+    <strong>ws chat</strong>
+    <br>
+    <input type="text" id="msg" />
+    <input type="button" value="send" onclick="send()" />
+    <br>
+    <hr>
+    <div id="messages" />
+</body>
+
+</html>
