@@ -7,7 +7,9 @@
   'use strict';
 
   angular
-    .module('buscoco.components.busstationselect', [])
+    .module('buscoco.components.busstationselect', [
+      // 'buscoco.service.getbusstationservice'
+      ])
     .controller('BusStationSelectController', BusStationSelectController);
 
   BusStationSelectController.$inject = [];
@@ -20,6 +22,8 @@
    */
   function BusStationSelectController() {
     console.log('BusStationSelectController Constructor');
+    // this.GetBusStationService = GetBusStationService;
+
   }
 
   /**
@@ -31,6 +35,7 @@
   BusStationSelectController.prototype.activate = function() {
     console.log('BusStationSelectController activate Method');
     vm = this;
+    // var busStatioin = vm.GetBusStationService.get
   };
 
   /**
