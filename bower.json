@@ -1,0 +1,17 @@
+{
+  "name": "buscoco",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-new-router": "~0.5.3",
+    "angular-resource": "~1.4.3"
+  },
+  "overrides": {
+    "angular-new-router": {
+      "main": "dist/router.es5.js"
+    }
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.3"
+  }
+}
