@@ -8,22 +8,25 @@
 
   angular
     .module('buscoco.components.busstationselect', [
-      // 'buscoco.service.getbusstationservice'
+      'buscoco.service.getbusstation'
       ])
-    .controller('BusStationSelectController', BusStationSelectController);
+    .controller('BusstationselectController', BusstationselectController);
 
-  BusStationSelectController.$inject = [];
+  BusstationselectController.$inject = ['GetBusStationService', '$location', '$q'];
 
   /**
-   * BusStationSelectController
+   * BusstationselectController
    *
-   * @class BusStationSelectController
+   * @class BusstationselectController
    * @constructor
    */
-  function BusStationSelectController() {
-    console.log('BusStationSelectController Constructor');
-    // this.GetBusStationService = GetBusStationService;
+  function BusstationselectController(GetBusStationService, $location, $q) {
+    console.log('BusstationselectController Constructor');
+    this.GetBusStationService = GetBusStationService;
+    this.$location = $location;
+    this.$q = $q;
 
+    this.setDataA = 'dataSet';
   }
 
   /**
@@ -32,10 +35,32 @@
    *
    * @method activate
    */
-  BusStationSelectController.prototype.activate = function() {
-    console.log('BusStationSelectController activate Method');
+  BusstationselectController.prototype.activate = function() {
+    console.log('BusstationselectController activate Method');
     vm = this;
-    // var busStatioin = vm.GetBusStationService.get
+    vm.stationList = [];
+    var busStatioin = vm.GetBusStationService.getBusStationFile().query().$promise;
+    // console.log(busStatioin);
+
+    busStatioin
+    .then(generateStationList)
+    .catch(error);
+    // console.log('vm', vm.stationList[0]);
+    // console.log('this', this.stationList[0]);
+  };
+
+  var generateStationList = function (busstation) {
+    console.log('call stationList!');
+    busstation.forEach(function(data) {
+      console.log(data.name);
+      vm.stationList.push(data);
+    });
+    console.log(vm.stationList);
+    // vm.buslist = busstation;
+  };
+
+  var error = function(e) {
+    vm.error = e;
   };
 
   /**

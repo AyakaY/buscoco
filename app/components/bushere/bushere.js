@@ -8,18 +8,18 @@
 
   angular
     .module('buscoco.components.bushere', [])
-    .controller('BusHereController', BusHereController);
+    .controller('BushereController', BushereController);
 
-  BusHereController.$inject = [];
+  BushereController.$inject = [];
 
   /**
-   * BusHereController
+   * BushereController
    *
-   * @class BusHereController
+   * @class BushereController
    * @constructor
    */
-  function BusHereController() {
-    console.log('BusHereController Constructor');
+  function BushereController() {
+    console.log('BushereController Constructor');
   }
 
   /**
@@ -28,8 +28,8 @@
    *
    * @method activate
    */
-  BusHereController.prototype.activate = function() {
-    console.log('BusHereController activate Method');
+  BushereController.prototype.activate = function() {
+    console.log('BushereController activate Method');
     vm = this;
   };
 

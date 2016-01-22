@@ -20,7 +20,7 @@
    * @class GetBusStationService
    * @constructor
    */
-  function GetBusStationService() {
+  function GetBusStationService($resource) {
 
     /**
      * My property description.  Like other pieces of your comment blocks,
@@ -32,21 +32,28 @@
     //  */
     // var someProperty = {};
 
-    // var getbusstationService = {
-    //   someMethod: function() {
-    //     return;
-    //   }
-    // };
+    var getbusstationService = {
+      getBusStationFile: function() {
+        var busstationFiles = $resource('/api/getBusStation', {
+          query: {
+            method: 'GET',
+            isArray: false,
+            transformResponse: function(data) {
+              return angular.formJson(data);
+            }
+          }
+        });
+        return busstationFiles;
+      }
+      // getStatioinNameList: function(busStationData) {
+      //   var stationNameList = [];
+      //   for (var i = 0; i < busStationData.length; i++) {
+      //     busStationData[i]
+      //   }
+      // }
+    };
 
-    // return getbusstationService;
-
-    var busstation = [
-      {'name': '鴨池新町', 'latitude': 31.55416881, 'longitude': 130.55578930},
-      {'name': 'ニュータウン中央', 'latitude': 31.55778126, 'longitude': 130.55729961},
-      {'name': '県庁前', 'latitude': 31.56047685, 'longitude': 130.55692949}
-    ];
-
-    return busstation;
+    return getbusstationService;
 
   }
 

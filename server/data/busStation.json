@@ -1,5 +1,5 @@
 [
-  { "name": "鴨池新町", "latitude": 31.55416881, "longitude": 130.55578930 },
-  { "name": "ニュータウン中央", "latitude": 31.55778126, "longitude": 130.55729961},
-  { "name": "県庁前", "latitude": 31.56047685, "longitude": 130.55692949 }
+  { "id": 1, "name": "鴨池新町", "latitude": 31.55416881, "longitude": 130.55578930 },
+  { "id": 2, "name": "ニュータウン中央", "latitude": 31.55778126, "longitude": 130.55729961},
+  { "id": 3, "name": "県庁前", "latitude": 31.56047685, "longitude": 130.55692949 }
 ]

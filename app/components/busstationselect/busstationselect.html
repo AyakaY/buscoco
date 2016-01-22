@@ -2,11 +2,18 @@
   <h2>バス停選択</h2>
   <div class="startBusStation">
     <label for="startBusStation">のりば</label>
-    <select name="startBusStation" id="startBusStation">
-      <option value="">鴨池新町</option>
-      <option value="">県庁前</option>
-      <option value="">ニュータウン中央</option>
+    <select name="startBusStation" id="startBusStation" ng-options="s as s.name for s in busstationselect.stationList">
+      <option value="">バス停を選択してください。</option>
     </select>
+    <p>{{busstationselect.stationList}}</p>
+    <p>{{busstationselect.setDataA}}</p>
+    <!-- <select name="startBusStation" id="startBusStation"> -->
+      <!-- <option value="">鴨池新町</option>
+      <option value="">県庁前</option>
+      <option value="">ニュータウン中央</option> -->
+
+      <!-- <option value="" ng-repeat="stationName in vm.buslist[$index].name">{{stationName}}</option> -->
+    <!-- </select> -->
   </div>
   <div class="goalBusStation">
     <label for="goalBusStation">行き先</label>
