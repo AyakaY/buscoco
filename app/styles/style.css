@@ -52,6 +52,20 @@ ul{
 	padding: 0;
 	list-style: none;
 }
+/*ボタンの基本スタイル*/
+button{
+  border-radius: 4px;
+  font-size: .8rem;
+  padding: .25em .5em;
+  border: 1px solid #CCCCCC;
+  background: #f5f4ec;
+  background: -moz-linear-gradient(top,  #f5f4ec 0%, #e8e7e0 100%);
+  background: -webkit-linear-gradient(top,  #f5f4ec 0%,#e8e7e0 100%);
+  background: linear-gradient(to bottom,  #f5f4ec 0%,#e8e7e0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f4ec', endColorstr='#e8e7e0',GradientType=0 );
+  height: 2.5rem;
+  width: 100%;
+}
 
 
 /*バス停選択*/
@@ -80,6 +94,11 @@ ul{
 
 .busStationSelect .goalBusStation{
 	padding-bottom: .5rem;
+}
+.busStationSelect .busLineSearchBtn{
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  line-height: 1em;
 }
 
 /*乗車バス選択*/
