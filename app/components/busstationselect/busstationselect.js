@@ -26,7 +26,6 @@
     this.$location = $location;
     this.$q = $q;
 
-    this.setDataA = 'dataSet';
   }
 
   /**
@@ -38,15 +37,15 @@
   BusstationselectController.prototype.activate = function() {
     console.log('BusstationselectController activate Method');
     vm = this;
+    // バス停リスト作成
     vm.stationList = [];
     var busStatioin = vm.GetBusStationService.getBusStationFile().query().$promise;
-    // console.log(busStatioin);
-
     busStatioin
     .then(generateStationList)
     .catch(error);
-    // console.log('vm', vm.stationList[0]);
-    // console.log('this', this.stationList[0]);
+
+    // 乗車バス路線
+    vm.busline = [];
   };
 
   var generateStationList = function (busstation) {
@@ -56,7 +55,6 @@
       vm.stationList.push(data);
     });
     console.log(vm.stationList);
-    // vm.buslist = busstation;
   };
 
   var error = function(e) {
