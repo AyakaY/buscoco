@@ -16,9 +16,9 @@
   <button type="button" class="busLineSearchBtn" ng-click="busstationselect.lineSelectPush()">検索する</button>
 </section>
 
-<section class="busLineSelect" ng-show="busstationselect.lineSelected">
+<section class="busLineSelect">
         <h2>乗車バス選択</h2>
-        <ul class="busLineList">
+        <ul class="busLineList animated" ng-show="busstationselect.lineSelected">
           <li>
             <a ng-href="/bushere" href="">
               <span class="busLineName">11番線</span>

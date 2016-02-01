@@ -119,7 +119,7 @@ button{
 
 
 /*バスここ*/
-.busHere .busRoute{
+/*.busHere .busRoute{
 	padding-left: 3rem;
 }
 .busHere .busRoute li{
@@ -132,8 +132,34 @@ button{
 .busHere .busRoute li.active{
 	font-weight: bold;
   background: url(/images/icon_busStation_orange.png) .5rem 1.25rem no-repeat;
-}
+}*/
 
+.busHere .busRoute li{
+  position: relative;
+}
+.busHere .busRoute li:aftre{
+  content: "";
+  display: block;
+  clear: both;
+}
+.busHere .busRoute li .busImageArea{
+  width: 48px;
+  height: 40px;
+  background: url(/images/icon_bus_big.png) center center no-repeat;
+  position: absolute;
+}
+.busHere .busRoute li .busstationWrap{
+  height: 40px;
+  margin-left: 55px;
+  padding-left: 1.8rem;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid #CCCCCC;
+  background: url(/images/icon_busStation_big.png) .5rem .5rem no-repeat;
+}
+.busHere .busRoute li.active .busstationWrap{
+  background: url(/images/icon_busStation_orange.png) .5rem .5rem no-repeat;
+}
 
 /*********************
 タブレット向けレイアウト
