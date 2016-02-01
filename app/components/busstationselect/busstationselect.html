@@ -13,10 +13,10 @@
       <option value="">バス停を選択してください。</option>
     </select>
   </div>
-  <button type="button" class="busLineSearchBtn">検索する</button>
+  <button type="button" class="busLineSearchBtn" ng-click="busstationselect.lineSelectPush()">検索する</button>
 </section>
 
-<section class="busLineSelect">
+<section class="busLineSelect" ng-show="busstationselect.lineSelected">
         <h2>乗車バス選択</h2>
         <ul class="busLineList">
           <li>

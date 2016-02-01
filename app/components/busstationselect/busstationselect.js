@@ -46,19 +46,26 @@
 
     // 乗車バス路線
     vm.busline = [];
+    vm.lineSelected = false; //乗車バス選択の一時対応
+
   };
 
   var generateStationList = function (busstation) {
     console.log('call stationList!');
     busstation.forEach(function(data) {
-      console.log(data.name);
+      // console.log(data.name);
       vm.stationList.push(data);
     });
-    console.log(vm.stationList);
+    // console.log(vm.stationList);
   };
 
   var error = function(e) {
     vm.error = e;
+  };
+
+  //バス停選択検索ボタン押下
+  BusstationselectController.prototype.lineSelectPush = function() {
+    vm.lineSelected = true;
   };
 
   /**
