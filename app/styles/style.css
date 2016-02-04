@@ -36,12 +36,22 @@ h2{
 
 input,
 select,
+textarea,
+button{
+  font-size: 1rem;
+  font-family: 'メイリオ', 'Meiryo', 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', sans-serif;
+  color: #444444;
+}
+
+input,
+select,
 textarea{
 	border: 1px solid #CCCCCC;
-	font-size: 1rem;
-	font-family: 'メイリオ', 'Meiryo', 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', sans-serif;
-	color: #444444;
 	border-radius: 0;
+}
+
+select{
+  -webkit-appearance:none;
 }
 
 section{
@@ -119,21 +129,6 @@ button{
 
 
 /*バスここ*/
-/*.busHere .busRoute{
-	padding-left: 3rem;
-}
-.busHere .busRoute li{
-	border-bottom: 1px solid #CCCCCC;
-	padding-left: 2em;
-	padding-bottom: .5rem;
-	padding-top: 1.5rem;
-  background: url(/images/icon_busStation_big.png) .5rem 1.25rem no-repeat;
-}
-.busHere .busRoute li.active{
-	font-weight: bold;
-  background: url(/images/icon_busStation_orange.png) .5rem 1.25rem no-repeat;
-}*/
-
 .busHere .busRoute li{
   position: relative;
 }
@@ -147,6 +142,11 @@ button{
   height: 40px;
   background: url(/images/icon_bus_big.png) center center no-repeat;
   position: absolute;
+  transition: opacity ease-in .5s;
+  opacity: 0;
+}
+.busHere .busRoute li.active .busImageArea{
+  opacity: 1;
 }
 .busHere .busRoute li .busstationWrap{
   height: 40px;

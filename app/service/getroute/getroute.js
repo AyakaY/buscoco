@@ -10,7 +10,7 @@
     .module('buscoco.service.getroute', [])
     .factory('GetRouteService', GetRouteService);
 
-  GetRouteService.$inject = [];
+  GetRouteService.$inject = ['$resource'];
 
   /**
    * GetRouteService
@@ -18,7 +18,7 @@
    * @class GetRouteService
    * @constructor
    */
-  function GetRouteService() {
+  function GetRouteService($resource) {
 
     /**
      * My property description.  Like other pieces of your comment blocks,
@@ -31,8 +31,17 @@
     var someProperty = {};
 
     var getrouteService = {
-      someMethod: function() {
-        return;
+      getRouteFile: function() {
+        var routeFiles = $resource('/api/getRoute', {
+          query: {
+            method: 'GET',
+            isArray: false,
+            transformResponse: function(data) {
+              return angular.formJson(data);
+            }
+          }
+        });
+        return routeFiles;
       }
     };
 

@@ -9,9 +9,12 @@
   angular
     .module('buscoco', [
       'ngNewRouter',
+      'ngAnimate',
       'buscoco.config',
       'buscoco.components.busstationselect',
-      'buscoco.components.bushere'
+      'buscoco.components.bushere',
+      'buscoco.service.getbusstation',
+      'buscoco.service.getroute'
     ])
     .controller('AppController', AppController);
 

@@ -7,9 +7,7 @@
   'use strict';
 
   angular
-    .module('buscoco.components.busstationselect', [
-      'buscoco.service.getbusstation'
-      ])
+    .module('buscoco.components.busstationselect', [])
     .controller('BusstationselectController', BusstationselectController);
 
   BusstationselectController.$inject = ['GetBusStationService', '$location', '$q'];

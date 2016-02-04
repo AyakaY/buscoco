@@ -10,7 +10,7 @@
     .module('buscoco.components.bushere', [])
     .controller('BushereController', BushereController);
 
-  BushereController.$inject = [];
+  BushereController.$inject = ['GetRouteService', '$q'];
 
   /**
    * BushereController
@@ -18,8 +18,10 @@
    * @class BushereController
    * @constructor
    */
-  function BushereController() {
+  function BushereController(GetRouteService, $q) {
     console.log('BushereController Constructor');
+    this.GetRouteService = GetRouteService;
+    this.$q = $q;
   }
 
   /**
@@ -31,6 +33,36 @@
   BushereController.prototype.activate = function() {
     console.log('BushereController activate Method');
     vm = this;
+
+    vm.route = [];
+    vm.busposition = '';
+    var routes = vm.GetRouteService.getRouteFile().query().$promise;
+
+    routes
+      .then(function(rotelist) {
+        rotelist.forEach(function(data, i) {
+          // console.log(data);
+          vm.route.push(data);
+          if (data.passing === 1) {
+            vm.busposition = i;
+            console.log(vm.busposition);
+          }
+        });
+      })
+      .catch(error);
+
+  };
+
+  var error = function(e) {
+    vm.error = e;
+  };
+
+  BushereController.prototype.busmove = function() {
+    if (vm.busposition < vm.route.length) {
+      vm.route[vm.busposition].passing  = 2;
+      vm.busposition += 1;
+      vm.route[vm.busposition].passing = 1;
+    }
   };
 
   /**

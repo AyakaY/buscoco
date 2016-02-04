@@ -2,36 +2,18 @@
   <h2>バスここ！</h2>
   <div>
     <ul class="busRoute">
-      <li>
+
+      <li ng-repeat="route in bushere.route" ng-class="{active:route.passing == 1}">
         <div class="busImageArea"></div>
-        <div class="busstationWrap">
-          <span class="busStationName">鴨池港</span>
-          <span class="busTime">13:10</span>
-        </div>
+          <div class="busstationWrap">
+            <span class="busStationName">{{route.name}}</span>
+            <span class="busTime">{{route.time}}</span>
+          </div>
       </li>
-      <li class="active">
-        <div class="busImageArea"></div>
-        <div class="busstationWrap">
-          <span class="busStationName">鴨池港</span>
-          <span class="busTime">13:10</span>
-        </div>
-      </li>
-      <li>
-        <div class="busImageArea"></div>
-        <div class="busstationWrap">
-          <span class="busStationName">鴨池港</span>
-          <span class="busTime">13:10</span>
-        </div>
-      </li>
-      <!-- <li class="active">
-        <span class="busStationName">鴨池新町</span>
-        <span class="busTime">13:13</span>
-      </li>
-      <li>
-        <span class="busStationName">本町公園前</span>
-        <span class="busTime">13:14</span>
-      </li> -->
+
 
     </ul>
+    <button type="button" ng-click="bushere.busmove()">バスを進める</button>
   </div>
 </section>
+
