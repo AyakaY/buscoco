@@ -2,16 +2,22 @@
   <h2>バス停選択</h2>
   <div class="startBusStation">
     <label for="startBusStation">のりば</label>
-    <select name="startBusStation" id="startBusStation" ng-options="s.id as s.name for s in busstationselect.stationList" ng-model="busstationselect.startStation">
-      <option value="">バス停を選択してください。</option>
-    </select>
+    <div class="selectWrap">
+      <select name="startBusStation" id="startBusStation" ng-options="s.id as s.name for s in busstationselect.stationList" ng-model="busstationselect.startStation">
+        <option value="">バス停を選択してください。</option>
+      </select>
+      <a class="mapBtn" href="/map.html" target="_blank">地図から選択</a>
+    </div>
   </div>
 
   <div class="goalBusStation">
     <label for="goalBusStation">行き先</label>
-    <select name="goalBusStation" id="goalBusStation" ng-options="s.id as s.name for s in busstationselect.stationList" ng-model="busstationselect.goalStation">
-      <option value="">バス停を選択してください。</option>
-    </select>
+    <div class="selectWrap">
+      <select name="goalBusStation" id="goalBusStation" ng-options="s.id as s.name for s in busstationselect.stationList" ng-model="busstationselect.goalStation">
+        <option value="">バス停を選択してください。</option>
+      </select>
+      <a class="mapBtn" href="/map.html" target="_blank">地図から選択</a>
+    </div>
   </div>
   <button type="button" class="busLineSearchBtn" ng-click="busstationselect.lineSelectPush()">検索する</button>
 </section>

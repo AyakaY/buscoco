@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>map sample</title>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript">
+      rendererOptions = {
+        draggable: true,
+        preserveViewport:false,
+        suppressMarkers : true
+      };
+      var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+      var directionsService = new google.maps.DirectionsService();
+
+      function initialize() {
+        // 現在位置
+        var myOptions = {
+          zoom: 14, /*拡大比率*/
+          center: new google.maps.LatLng(31.556019, 130.557284), /*表示枠内の中心点*/
+          mapTypeId: google.maps.MapTypeId.ROADMAP/*表示タイプの指定*/
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+        directionsDisplay.setMap(map);
+        google.maps.event.addListener(directionsDisplay,
+          'directions_changed', function(){
+        });
+
+        //マーカーオプションの指定
+        var markerOption = {
+            position : new google.maps.LatLng(31.556019, 130.557284), //マーカーを表示させる座標
+            map : map,  //マーカーを表示させる地図
+            title : "現在位置"  //マウスオーバーした際に表示させる文字列
+        };
+        var marker = new google.maps.Marker(markerOption);
+
+        new google.maps.Marker({position: new google.maps.LatLng(31.58422698, 130.54306101), title: "鹿児島中央駅", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.58379998, 130.54607469), title: "共研公園前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.58162115, 130.54533444), title: "上之園町", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.57782081, 130.5456389), title: "甲南高校前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.57540013, 130.547589), title: "上荒田町", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.57343853, 130.54901358), title: "荒田二丁目", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.57115073, 130.55618304), title: "下荒田四丁目", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.5713457, 130.55940626), title: "与次郎ヶ浜", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.56586355, 130.5569162), title: "水産学部前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.56047685, 130.55692949), title: "県庁前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.55778126, 130.55729961), title: "ニュータウン中央", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.55844746, 130.5597832), title: "海づり公園前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.56092032, 130.56138768), title: "九州電力前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.56140078, 130.56136692), title: "与次郎二丁目", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.56484863, 130.56315958), title: "市民文化ホール前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.56681967, 130.56431909), title: "市民文化ホール北口", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.57018661, 130.56410398), title: "与次郎一丁目", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.57120979, 130.56405114), title: "共月亭前", map: map, icon: "icon_user.png"});
+        new google.maps.Marker({position: new google.maps.LatLng(31.5713457, 130.55940626), title: "与次郎ヶ浜", map: map, icon: "icon_user.png"});
+
+        calcRoute();
+
+        //マーカーオプションの指定：バスの位置
+        var markerOption2 = {
+            position : new google.maps.LatLng(31.564002, 130.556336), //マーカーを表示させる座標
+            map : map,  //マーカーを表示させる地図
+            title : "バスの位置"  //マウスオーバーした際に表示させる文字列
+        };
+        var marker2 = new google.maps.Marker(markerOption2);
+
+      }
+
+      function calcRoute() {
+        var request = {
+          origin: new google.maps.LatLng(31.57540013, 130.547589),
+          destination: new google.maps.LatLng(31.56140078, 130.56136692),
+          travelMode: google.maps.DirectionsTravelMode.DRIVING,
+          unitSystem: google.maps.DirectionsUnitSystem.METRIC,
+          // waypoints は８箇所まで
+          waypoints: [
+            {location: new google.maps.LatLng(31.57343853, 130.54901358), stopover:false},
+            {location: new google.maps.LatLng(31.57115073, 130.55618304), stopover:false},
+            {location: new google.maps.LatLng(31.5713457, 130.55940626), stopover:false},
+            {location: new google.maps.LatLng(31.56586355, 130.5569162), stopover:false},
+            {location: new google.maps.LatLng(31.56047685, 130.55692949), stopover:false},
+            {location: new google.maps.LatLng(31.55778126, 130.55729961), stopover:false},
+            {location: new google.maps.LatLng(31.55844746, 130.5597832), stopover:false},
+            {location: new google.maps.LatLng(31.56092032, 130.56138768), stopover:false}
+          ],
+          optimizeWaypoints: true,
+          avoidHighways: true,
+          avoidTolls: true
+        };
+      directionsService.route(request,
+       function(response,status){
+       if (status == google.maps.DirectionsStatus.OK){
+        directionsDisplay.setDirections(response);}
+       });
+      }
+
+    </script>
+  </head>
+
+  <body onload="initialize();">
+    <div id="map_canvas" style="width:80%;height:500px;"></div>
+  </body>
+
+</html>

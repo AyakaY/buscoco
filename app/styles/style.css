@@ -63,7 +63,8 @@ ul{
 	list-style: none;
 }
 /*ボタンの基本スタイル*/
-button{
+button,
+.mapBtn{
   border-radius: 4px;
   font-size: .8rem;
   padding: .25em .5em;
@@ -75,6 +76,33 @@ button{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f4ec', endColorstr='#e8e7e0',GradientType=0 );
   height: 2.5rem;
   width: 100%;
+}
+a.mapBtn{
+  text-decoration: none;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  padding: 0 10px;
+  margin: 0;
+}
+a.mapBtn:after{
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: url(/images/icon_map.png) center center no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+     -moz-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+       -o-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 
 
@@ -91,25 +119,35 @@ button{
   margin: .5rem 0;
 }
 .busStationSelect label{
-	display: block;
-	font-weight: bold;
+  display: block;
+  font-weight: bold;
   padding-left: 1.5rem;
   background: url(../images/icon_busStation.png) .5rem center no-repeat;
 }
-.busStationSelect select{
-	box-sizing: border-box;
-	padding: .5rem;
-	width: 100%;
+.busStationSelect .selectWrap{
+  position: relative;
+}
+.busStationSelect .selectWrap select{
+  box-sizing: border-box;
+  padding: .5rem;
+  width: 100%;
+}
+.busStationSelect .selectWrap .mapBtn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
 }
 
 .busStationSelect .goalBusStation{
-	padding-bottom: .5rem;
+  padding-bottom: .5rem;
 }
 .busStationSelect .busLineSearchBtn{
   margin-top: 1rem;
   font-size: 1.25rem;
   line-height: 1em;
 }
+
 
 /*乗車バス選択*/
 .busLineSelect h2{
