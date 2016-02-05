@@ -161,6 +161,11 @@ button{
   background: url(/images/icon_busStation_orange.png) .5rem .5rem no-repeat;
 }
 
+/*マップ*/
+.gmap .angular-google-map-container{
+  height: 500px;
+}
+
 /*********************
 タブレット向けレイアウト
 （幅が732px以上だった場合に適用）

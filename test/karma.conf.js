@@ -20,6 +20,9 @@ module.exports = function(config) {
       'bower_components/angular-new-router/dist/router.es5.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-animate/angular-animate.js',
+      'bower_components/angular-simple-logger/dist/angular-simple-logger.js',
+      'bower_components/lodash/lodash.js',
+      'bower_components/angular-google-maps/dist/angular-google-maps.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       // injector:js
@@ -27,6 +30,7 @@ module.exports = function(config) {
       'app/components/bushere/bushere.js',
       'app/components/busstationselect/busstationselect.js',
       'app/components/contact/contact.js',
+      'app/components/gmaps/gmaps.js',
       'app/components/home/home.js',
       'app/scripts/config.js',
       'app/service/getbusstation/getbusstation.js',
@@ -37,6 +41,7 @@ module.exports = function(config) {
       'test/components/bushere/bushere.spec.js',
       'test/components/busstationselect/busstationselect.spec.js',
       'test/components/contact/contact.spec.js',
+      'test/components/gmaps/gmaps.spec.js',
       'test/components/home/home.spec.js',
       'test/main.spec.js',
       'test/service/getbusstation/getbusstation.mock.js',

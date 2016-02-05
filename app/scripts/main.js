@@ -13,15 +13,18 @@
       'buscoco.config',
       'buscoco.components.busstationselect',
       'buscoco.components.bushere',
+      'buscoco.components.gmaps',
       'buscoco.service.getbusstation',
-      'buscoco.service.getroute'
+      'buscoco.service.getroute',
+      'uiGmapgoogle-maps'
     ])
     .controller('AppController', AppController);
 
   AppController.$routeConfig = [
     {path: '/',       redirectTo: '/busstationselect'},
     {path: '/busstationselect',    component: 'busstationselect'},
-    {path: '/bushere',   component: 'bushere'}
+    {path: '/bushere',   component: 'bushere'},
+    {path: '/gmaps',   component: 'gmaps'}
   ];
 
   AppController.$inject = [];
